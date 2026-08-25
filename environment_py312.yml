@@ -1,0 +1,22 @@
+# ts_finder rebuilt on python 3.12 so fairchem-core 2.21.0 (which registers
+# uma-s-1p2) is installable -- PyPI drops fairchem>2.14 for py3.10.
+# pypka is NOT here: it needs numpy<2 and lives in the sidecar env (env_pypka),
+# wired via ENZYME_TS_PYPKA_PY. Matches the uma env's fairchem for numeric parity.
+name: ts_finder
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - numpy
+  - scipy
+  - ase
+  - rdkit
+  - biopython
+  - ambertools            # tleap, pdb4amber, antechamber
+  - matplotlib
+  - pip:
+      - torch
+      - fairchem-core==2.21.0   # registers uma-s-1p2 (matches the uma env)
+      - sella
+      - pysisyphus

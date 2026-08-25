@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+/build/          # root-level dist build only -- NOT the src/enzyme_ts/build package
+dist/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Environments (built in-place under the project; never tracked)
+/env/
+/env_py312/
+/env_pypka/
+/env_mace/
+/gcc_client/
+
+# Build / install logs
+*.log
+
+# Pipeline working dirs & artifacts (per-system run outputs, land under workroot/cwd)
+/build/*/
+dg_k*/
+*.traj
+result_k*.json
+
+# Model weights / caches
+*.model
+*.pt
+*.ckpt
+.cache/
+
+# OS
+.DS_Store

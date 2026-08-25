@@ -1,0 +1,23 @@
+# One self-contained env for the whole enzyme_ts pipeline -- no env juggling.
+# Create:  mamba env create -f environment.yml   (then `pip install -e .`)
+# Provides: ML potential (fairchem/UMA) + ASE/Sella + RDKit + AmberTools
+# (tleap/pdb4amber) + reduce + pypKa (protonation) + Biopython (region selection).
+name: ts_finder
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10            # pypKa 2.10 supports 3.10; fairchem/torch fine here
+  - pip
+  - numpy
+  - scipy
+  - ase
+  - rdkit
+  - biopython
+  - ambertools            # tleap, pdb4amber, AND reduce (all bundled)
+  - matplotlib
+  - pip:
+      - torch
+      - fairchem-core     # UMA / OMol25 potentials
+      - sella
+      - pypka             # PB/MC pKa protonation determinant
+      - pysisyphus        # optional: GSM TS-search backend

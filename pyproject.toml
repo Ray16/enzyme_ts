@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "enzyme-ts"
+version = "0.1.0"
+description = "Config-driven enzyme transition-state and Gibbs-barrier modeling on ML-potential active-site clusters"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Ray Zhu" }]
+dependencies = [
+    "numpy",
+    "scipy",
+    "ase",
+    "rdkit",
+    "sella",
+    "torch",
+    "fairchem-core",   # UMA / OMol25 potentials
+    "biopython",       # region selection
+]
+
+# External (not pip): AmberTools (tleap/pdb4amber) via a conda env, and a quantumPDB
+# checkout for Voronoi active-site selection. Configure their locations with the
+# ENZYME_TS_* environment variables (see enzyme_ts/config.py).
+
+[project.optional-dependencies]
+plot = ["matplotlib"]
+pysisyphus = ["pysisyphus"]   # only for the "gsm" TS-search backend
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"enzyme_ts" = ["../systems/*.py"]
